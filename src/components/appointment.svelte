@@ -2,9 +2,10 @@
   let name;
   let email;
   let phoneNumber;
+  let textContent;
 
   const handleSubmit = () => {
-    console.log(name, email, phoneNumber)
+    console.log(name, email, phoneNumber, textContent)
   }
 
 </script>
@@ -108,14 +109,14 @@
           placeholder="Phone Number" />
 
         <select class="appointment-select" name="cars" id="cars">
-          <option value="volvo">Change tire</option>
-          <option value="saab">Saab</option>
-          <option value="mercedes">Mercedes</option>
-          <option value="audi">Audi</option>
+          <option value="tire">Tire</option>
+          <option value="oil">Oil</option>
+          <option value="water">Water</option>
+          <option value="color">Color</option>
         </select>
       </div>
 
-      <div class="row"><textarea class="appointment__textarea" /></div>
+      <div class="row"><textarea bind:value="{textContent}" class="appointment__textarea" /></div>
 
       <div class="row align-appointment-btn">
         <button class="appointment__btn">Make an appointment</button>
