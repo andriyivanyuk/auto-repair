@@ -1,15 +1,32 @@
 <script>
+  export let backdrop;
+  let mobileNav;
+
   
+  $: if (backdrop) {
+    toggleNav()
+  }
+
+
+
+  const toggleNav = () => {
+   mobileNav.style.display = "block";
+   console.log('test2', backdrop);
+  }
 </script>
 
 <style>
   .header-shell {
     background-image: url("/assets/img/header-background.png");
     background-size: cover;
+    background-repeat: no-repeat;
+    background-position: right top;
   }
   .header-shell__upper-content__navigation-wrapper__info-section__title {
     font-size: 20px;
     color: #ffffff;
+    align-self: center;
+    margin-right: 36px;
   }
   .header-shell__upper-content {
     margin: 0 auto;
@@ -24,7 +41,7 @@
     display: flex;
   }
   .header-shell__upper-content__navigation-wrapper__info-section__services-wrapper__appointment-btn {
-    background-color: #e30b0b;
+    background-color: #c40b0b;
     box-sizing: border-box;
     border: none;
     color: #ffffff;
@@ -34,6 +51,7 @@
     line-height: 24px;
     letter-spacing: 1px;
     margin-left: 32px;
+    font-weight: 700;
   }
   .header-shell__upper-content__navigation-wrapper__info-section__services-wrapper__call-us,
   .header-shell__upper-content__navigation-wrapper__info-section__services-wrapper__hours {
@@ -43,7 +61,6 @@
   }
   .header-shell__upper-content__navigation-wrapper__info-section__services-wrapper__call-us__title {
     font-size: 14px;
-    line-height: 22px;
     text-transform: uppercase;
     letter-spacing: 1px;
   }
@@ -58,13 +75,16 @@
     flex-direction: column;
     margin-left: 12px;
     color: #ffffff;
+    text-transform: uppercase;
+    font-size: 14px;
+    line-height: 1.5;
   }
   .header-shell__down-content {
     margin-top: 126px;
   }
   .header-shell__down-content__action-button {
-    margin: 48px 0 300px;
-    background-color: #e30b0b;
+    margin: 48px 0 250px;
+    background-color: #c40b0b;
     box-sizing: border-box;
     border: none;
     color: #ffffff;
@@ -87,17 +107,87 @@
     font-size: 14px;
     line-height: 22px;
     letter-spacing: 1px;
-    color: #02133C;
+    color: #02133c;
   }
   .header-shell__upper-content__navigation-wrapper__main-navigation a {
-    color: #02133C;
+    color: #02133c;
     text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 600;
   }
   .header-shell__down-content__title {
     font-size: 56px;
     max-width: 583px;
     color: #ffffff;
     line-height: 56px;
+    font-weight: 900;
+  }
+  .header__shell__mobile-navigation {
+    display: none;
+    position: fixed;
+    z-index: 20;
+    top: 0;
+    left: 0;
+    background: white;
+    width: 80%;
+    height: 100vh;
+  }
+  .toggle-button {
+  width: 3rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding-top: 0;
+  padding-bottom: 0;
+  vertical-align: middle;
+}
+
+.toggle-button:focus {
+  outline: none;
+}
+
+.toggle-button__bar {
+  width: 100%;
+  height: 0.2rem;
+  background: white;
+  display: block;
+  margin: 0.6rem 0;
+}
+
+
+  @media (min-width: 1024px) and (max-width: 1439px) {
+    .header-shell__upper-content {
+      max-width: 920px;
+    }
+  }
+  @media (min-width: 768px) and (max-width: 1023px) {
+    .header-shell__upper-content {
+      max-width: 720px;
+    }
+    .header-shell__down-content__title {
+      align-self: flex-end;
+      font-size: 50px;
+    }
+    .header-shell__down-content {
+      display: flex;
+      flex-direction: column;
+    }
+    .header-shell__down-content__action-button {
+      width: 61%;
+      align-self: center;
+    }
+    .header-shell__upper-content__navigation-wrapper__info-section__services-wrapper__appointment-btn {
+      display: none;
+    }
+    .header-shell__upper-content__navigation-wrapper__info-section {
+      justify-content: initial;
+    }
+    .header-shell__upper-content__navigation-wrapper__info-section__title {
+      margin-left: 16px;
+    }
+    .header-shell__upper-content__navigation-wrapper__main-navigation__list__item {
+      font-size: 11px;
+    }
   }
 </style>
 
@@ -106,6 +196,14 @@
     <div class="header-shell__upper-content__navigation-wrapper">
       <div
         class="header-shell__upper-content__navigation-wrapper__info-section">
+        <button
+           on:click={toggleNav}
+           class="toggle-button">
+          <span class="toggle-button__bar" />
+          <span class="toggle-button__bar" />
+          <span class="toggle-button__bar" />
+        </button>
+        <img src="/assets/img/logo.svg" alt="" />
         <div
           class="header-shell__upper-content__navigation-wrapper__info-section__title">
           company title
@@ -122,11 +220,11 @@
             <div class="hours-duration-shell">
               <span
                 class="header-shell__upper-content__navigation-wrapper__info-section__services-wrapper__hours__title">
-                Service hours
+                Часы работы
               </span>
               <span
                 class="header-shell__upper-content__navigation-wrapper__info-section__services-wrapper__hours__duration">
-                Mon - Sat: 7:00 am - 6:00 pm
+                Пн - Суб: 9:00 - 20:00
               </span>
             </div>
           </div>
@@ -140,40 +238,84 @@
             <div class="title-number-shell">
               <span
                 class="header-shell__upper-content__navigation-wrapper__info-section__services-wrapper__call-us__title">
-                Call us
+                Свяжитесь с нами
               </span>
 
               <span
                 class="header-shell__upper-content__navigation-wrapper__info-section__services-wrapper__call-us__number">
-                phone number
+                +38 068-228-4467
               </span>
             </div>
           </div>
           <button
             class="header-shell__upper-content__navigation-wrapper__info-section__services-wrapper__appointment-btn">
-            Make an appointment
+            Назначить встречу
           </button>
         </div>
       </div>
       <nav
         class="header-shell__upper-content__navigation-wrapper__main-navigation">
-       <ul class="header-shell__upper-content__navigation-wrapper__main-navigation__list">
-         <li class="header-shell__upper-content__navigation-wrapper__main-navigation__list__item"><a href="#">Services</a></li>
-         <li class="header-shell__upper-content__navigation-wrapper__main-navigation__list__item"><a href="#">Specials</a></li>
-         <li class="header-shell__upper-content__navigation-wrapper__main-navigation__list__item"><a href="#">Estimates</a></li>
-         <li class="header-shell__upper-content__navigation-wrapper__main-navigation__list__item"><a href="#">Reviews</a></li>
-         <li class="header-shell__upper-content__navigation-wrapper__main-navigation__list__item"><a href="#">About</a></li>
-         <li class="header-shell__upper-content__navigation-wrapper__main-navigation__list__item"><a href="#">Contact</a></li>
-       </ul>
+        <ul
+          class="header-shell__upper-content__navigation-wrapper__main-navigation__list">
+          <li
+            class="header-shell__upper-content__navigation-wrapper__main-navigation__list__item">
+            <a href="#">Главная</a>
+          </li>
+          <li
+            class="header-shell__upper-content__navigation-wrapper__main-navigation__list__item">
+            <a href="#">О Нас</a>
+          </li>
+          <li
+            class="header-shell__upper-content__navigation-wrapper__main-navigation__list__item">
+            <a href="#">Преимущества</a>
+          </li>
+          <li
+            class="header-shell__upper-content__navigation-wrapper__main-navigation__list__item">
+            <a href="#">Наши работы</a>
+          </li>
+          <li
+            class="header-shell__upper-content__navigation-wrapper__main-navigation__list__item">
+            <a href="#">Услуги</a>
+          </li>
+          <li
+            class="header-shell__upper-content__navigation-wrapper__main-navigation__list__item">
+            <a href="#">Контакт</a>
+          </li>
+        </ul>
+      </nav>
+
+      <nav 
+         bind:this={mobileNav}
+         class="header__shell__mobile-navigation">
+        <ul class="header__shell__mobile-navigation__list">
+          <li class="header__shell__mobile-navigation__list__item">
+            <a href="#">Главная</a>
+          </li>
+          <li class="header__shell__mobile-navigation__list__item">
+            <a href="#">О Нас</a>
+          </li>
+          <li class="header__shell__mobile-navigation__list__item">
+            <a href="#">Преимущества</a>
+          </li>
+          <li class="header__shell__mobile-navigation__list__item">
+            <a href="#">Наши работы</a>
+          </li>
+          <li class="header__shell__mobile-navigation__list__item">
+            <a href="#">Услуги</a>
+          </li>
+          <li class="header__shell__mobile-navigation__list__item">
+            <a href="#">Контакт</a>
+          </li>
+        </ul>
       </nav>
     </div>
 
     <div class="header-shell__down-content">
       <p class="header-shell__down-content__title">
-        Top notch service is our main auto motive
+        Тонировка и химчистка авто
       </p>
       <button class="header-shell__down-content__action-button">
-        Make an appointment
+        Назначить встречу
       </button>
     </div>
   </div>

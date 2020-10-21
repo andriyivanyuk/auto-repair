@@ -38,7 +38,7 @@
     height: 21px;
     background-image: url("/assets/img/overline-mark.svg");
     position: absolute;
-    left: 207px;
+    left: -6px;
   }
   .we-are-shell {
     margin: 0 auto;
@@ -55,9 +55,13 @@
   .about-us-shell__who-we-are__main-image {
     margin-top: 54px;
     margin-bottom: -120px;
+    width: 100%;
   }
   .about-us-shell__promisses {
     margin-top: 230px;
+  }
+  .about-us-shell__promisses__to-you {
+    position: relative;
   }
   .about-us-shell__promisses__to-you__content {
     margin-left: 33px;

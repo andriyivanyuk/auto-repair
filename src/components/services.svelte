@@ -11,7 +11,10 @@
     height: 21px;
     background-image: url("/assets/img/overline-mark.svg");
     position: absolute;
-    left: 207px;
+    left: -6px;
+  }
+  .services__shell__uptitle {
+    position: relative;
   }
   .services__shell__uptitle__content {
     margin-left: 33px;
@@ -53,7 +56,7 @@
       justify-content: space-between;
       row-gap: 24px;
       padding-top: 78px;
-      padding-bottom: 236px;
+      padding-bottom: 150px;
   }
   .services__shell__list__item__title {
       font-size: 19px;

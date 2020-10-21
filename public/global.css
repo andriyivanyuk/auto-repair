@@ -37,18 +37,6 @@ a:visited {
 label {
 	display: block;
 }
-
-input, button, select, textarea {
-	/* font-family: inherit;
-	font-size: inherit;
-	-webkit-padding: 0.4em 0;
-	padding: 0.4em;
-	margin: 0 0 0.5em 0;
-	box-sizing: border-box;
-	border: 1px solid #ccc;
-	border-radius: 2px; */
-}
-
 input:disabled {
 	color: #ccc;
 }
@@ -74,3 +62,12 @@ button:focus {
 	max-width: 1020px;
 	margin: 0 auto;
 }
+@media (min-width: 1024px) and (max-width: 1439px) { 
+	.container {
+		max-width: 820px;
+	}
+}
+@media (min-width: 768px) and (max-width: 1023px) { 
+
+}
+@media (max-width: 767px) { }

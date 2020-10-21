@@ -3,16 +3,16 @@
   let email;
   let phoneNumber;
   let textContent;
+  let serviceType;
 
   const handleSubmit = () => {
-    console.log(name, email, phoneNumber, textContent)
-  }
-
+    console.log(serviceType);
+  };
 </script>
 
 <style>
   .appointment__shell {
-    padding: 130px 130px;
+    padding: 150px 150px;
     background-color: #02133c;
   }
   .align-form-elements {
@@ -82,19 +82,19 @@
 
 <section class="appointment__shell">
   <div class="container align-form-elements">
-    <form 
-       on:submit|preventDefault={handleSubmit}
-       class="appointment__shell__main-form">
+    <form
+      on:submit|preventDefault={handleSubmit}
+      class="appointment__shell__main-form">
       <p class="appointment__shell__main-form__title">Make an appointment</p>
       <div class="row">
         <input
-          bind:value="{name}"
+          bind:value={name}
           class="appointment__name"
           type="text"
           name=""
           placeholder="Name" />
         <input
-          bind:value="{email}"
+          bind:value={email}
           class="appointment__email"
           type="email"
           name=""
@@ -103,12 +103,16 @@
 
       <div class="row">
         <input
-          bind:value="{phoneNumber}"
+          bind:value={phoneNumber}
           class="appointment__number"
           type="number"
           placeholder="Phone Number" />
 
-        <select class="appointment-select" name="cars" id="cars">
+        <select
+          bind:value={serviceType}
+          class="appointment-select"
+          name="cars"
+          id="cars">
           <option value="tire">Tire</option>
           <option value="oil">Oil</option>
           <option value="water">Water</option>
@@ -116,7 +120,9 @@
         </select>
       </div>
 
-      <div class="row"><textarea bind:value="{textContent}" class="appointment__textarea" /></div>
+      <div class="row">
+        <textarea bind:value={textContent} class="appointment__textarea" />
+      </div>
 
       <div class="row align-appointment-btn">
         <button class="appointment__btn">Make an appointment</button>
