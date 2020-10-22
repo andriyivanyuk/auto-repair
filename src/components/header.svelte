@@ -1,18 +1,16 @@
 <script>
-  export let backdrop;
+  let backdrop;
   let mobileNav;
 
-  
-  $: if (backdrop) {
-    toggleNav()
-  }
-
-
-
   const toggleNav = () => {
-   mobileNav.style.display = "block";
-   console.log('test2', backdrop);
-  }
+    mobileNav.style.display = "block";
+    backdrop.style.display = "block";
+  };
+
+  const closeBackdrop = () => {
+    mobileNav.style.display = "none";
+    backdrop.style.display = "none";
+  };
 </script>
 
 <style>
@@ -99,6 +97,7 @@
     padding: 17px 0;
     margin-top: 28px;
   }
+
   .header-shell__upper-content__navigation-wrapper__main-navigation__list {
     display: flex;
     justify-content: space-evenly;
@@ -125,56 +124,107 @@
   .header__shell__mobile-navigation {
     display: none;
     position: fixed;
-    z-index: 20;
+    z-index: 21;
     top: 0;
     left: 0;
     background: white;
-    width: 80%;
+    width: 50%;
     height: 100vh;
+    max-height: 0;
+    transition: max-height 100ms ease-in-out;
   }
   .toggle-button {
-  width: 3rem;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  padding-top: 0;
-  padding-bottom: 0;
-  vertical-align: middle;
-}
+    width: 3rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding-top: 0;
+    padding-bottom: 0;
+    vertical-align: middle;
+    display: none;
+  }
 
-.toggle-button:focus {
-  outline: none;
-}
+  .toggle-button:focus {
+    outline: none;
+  }
 
-.toggle-button__bar {
-  width: 100%;
-  height: 0.2rem;
-  background: white;
-  display: block;
-  margin: 0.6rem 0;
-}
-
+  .toggle-button__bar {
+    width: 100%;
+    height: 0.2rem;
+    background: white;
+    display: block;
+    margin: 0.6rem 0;
+  }
+  .backdrop {
+    position: fixed;
+    display: none;
+    top: 0;
+    left: 0;
+    z-index: 20;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+  }
+  .header__shell__mobile-navigation__list {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    max-width: 400px;
+    background: #ffffff;
+    display: block;
+    padding: 40px 0;
+    text-align: center;
+  }
+  .header__shell__mobile-navigation__list li {
+    margin-top: 45px;
+  }
+  .header__shell__mobile-navigation__list li a {
+    font-size: 23px;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    color: #02133c;
+  }
 
   @media (min-width: 1024px) and (max-width: 1439px) {
     .header-shell__upper-content {
-      max-width: 920px;
+      max-width: 75%;
+    }
+    .header-shell__down-content__title {
+      line-height: 1.2;
+    }
+    .header-shell__down-content__action-button {
+      margin: 48px 0 240px;
+    }
+    .header-shell__upper-content__navigation-wrapper__info-section__services-wrapper__appointment-btn {
+      display: none;
     }
   }
   @media (min-width: 768px) and (max-width: 1023px) {
+    .header-shell__upper-content__navigation-wrapper__main-navigation {
+      display: none;
+    }
+    .toggle-button {
+      display: block;
+    }
     .header-shell__upper-content {
-      max-width: 720px;
+      max-width: 85%;
     }
     .header-shell__down-content__title {
       align-self: flex-end;
       font-size: 50px;
     }
     .header-shell__down-content {
-      display: flex;
-      flex-direction: column;
+      /* display: flex;
+      flex-direction: column; */
+      margin-top: 86px;
     }
     .header-shell__down-content__action-button {
       width: 61%;
       align-self: center;
+      margin: 48px 0 210px;
     }
     .header-shell__upper-content__navigation-wrapper__info-section__services-wrapper__appointment-btn {
       display: none;
@@ -188,21 +238,79 @@
     .header-shell__upper-content__navigation-wrapper__main-navigation__list__item {
       font-size: 11px;
     }
+    .header-shell__upper-content__navigation-wrapper__info-section__services-wrapper__call-us,
+    .header-shell__upper-content__navigation-wrapper__info-section__services-wrapper__hours {
+      margin-left: initial;
+    }
+  }
+  @media (max-width: 767px) {
+    .header-shell__upper-content {
+      max-width: 85%;
+    }
+    .header-shell__upper-content__navigation-wrapper__main-navigation {
+      display: none;
+    }
+    .toggle-button {
+      display: block;
+      align-self: flex-start;
+    }
+    .header-shell__upper-content__navigation-wrapper__info-section__services-wrapper__appointment-btn {
+      display: none;
+    }
+    .header-shell__upper-content__navigation-wrapper__info-section__services-wrapper {
+      flex-direction: column;
+    }
+    .header-shell__upper-content__navigation-wrapper__info-section__title {
+      margin-right: initial;
+      margin-bottom: 25px;
+      font-size: 45px;
+    }
+    .header-shell__upper-content__navigation-wrapper__info-section__services-wrapper__call-us,
+    .header-shell__upper-content__navigation-wrapper__info-section__services-wrapper__hours {
+      margin-left: initial;
+      margin-top: 40px;
+    }
+    .header-shell__upper-content__navigation-wrapper__info-section {
+      flex-direction: column;
+      align-items: center;
+    }
+    .header-shell__upper-content__navigation-wrapper__info-section img {
+      /* margin-top: -40px; */
+    }
+    .header-shell__down-content__title {
+      text-align: center;
+      font-size: 45px;
+    }
+    .header-shell__down-content__action-button {
+      margin: 48px auto 145px;
+      width: 100%;
+    }
+    .header-shell__down-content {
+      display: flex;
+      flex-direction: column;
+    }
+    .header-shell__down-content {
+      margin-top: 40px;
+    }
+    .header__shell__mobile-navigation__list {
+      max-width: 300px;
+    }
   }
 </style>
+
+<div on:click={closeBackdrop} bind:this={backdrop} class="backdrop" />
 
 <header class="header-shell">
   <div class="header-shell__upper-content">
     <div class="header-shell__upper-content__navigation-wrapper">
       <div
         class="header-shell__upper-content__navigation-wrapper__info-section">
-        <button
-           on:click={toggleNav}
-           class="toggle-button">
+        <button on:click={toggleNav} class="toggle-button">
           <span class="toggle-button__bar" />
           <span class="toggle-button__bar" />
           <span class="toggle-button__bar" />
         </button>
+
         <img src="/assets/img/logo.svg" alt="" />
         <div
           class="header-shell__upper-content__navigation-wrapper__info-section__title">
@@ -284,9 +392,7 @@
         </ul>
       </nav>
 
-      <nav 
-         bind:this={mobileNav}
-         class="header__shell__mobile-navigation">
+      <nav bind:this={mobileNav} class="header__shell__mobile-navigation">
         <ul class="header__shell__mobile-navigation__list">
           <li class="header__shell__mobile-navigation__list__item">
             <a href="#">Главная</a>

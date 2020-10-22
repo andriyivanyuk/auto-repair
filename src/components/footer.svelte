@@ -75,12 +75,17 @@
   }
   .footer__copyright {
     color: #959595;
-    background-color: #02133C;
+    background-color: #02133c;
     padding: 22px 22px;
   }
   .align-copyright {
     display: flex;
     justify-content: space-between;
+  }
+  @media (max-width: 767px) {
+    .footer__shell__elements {
+      flex-direction: column;
+    }
   }
 </style>
 

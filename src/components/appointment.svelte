@@ -12,17 +12,13 @@
 
 <style>
   .appointment__shell {
-    padding: 150px 150px;
+    padding: 150px 0;
     background-color: #02133c;
-  }
-  .align-form-elements {
-    display: flex;
-    justify-content: space-between;
   }
   .appointment__shell__main-form {
     background-color: #ffffff;
-    padding: 76px 58px 154px 58px;
-    width: 585px;
+    padding: 76px 58px 60px 58px;
+    max-width: 585px;
     box-sizing: border-box;
   }
   .appointment__shell__main-form::placeholder {
@@ -63,7 +59,7 @@
     height: 180px;
   }
   .appointment__btn {
-    margin-top: 30px;
+    margin-top: 60px;
     background-color: #e30b0b;
     box-sizing: border-box;
     border: none;
@@ -78,57 +74,62 @@
     display: flex;
     justify-content: flex-end;
   }
+  .align-form {
+    display: flex;
+    justify-content: center;
+  }
+  @media (max-width: 767px) { 
+    
+  }
 </style>
 
 <section class="appointment__shell">
-  <div class="container align-form-elements">
-    <form
-      on:submit|preventDefault={handleSubmit}
-      class="appointment__shell__main-form">
-      <p class="appointment__shell__main-form__title">Make an appointment</p>
-      <div class="row">
-        <input
-          bind:value={name}
-          class="appointment__name"
-          type="text"
-          name=""
-          placeholder="Name" />
-        <input
-          bind:value={email}
-          class="appointment__email"
-          type="email"
-          name=""
-          placeholder="Email" />
-      </div>
+    <div class="container align-form">
+      <form
+        on:submit|preventDefault={handleSubmit}
+        class="appointment__shell__main-form">
+        <p class="appointment__shell__main-form__title">Make an appointment</p>
+        <div class="row">
+          <input
+            bind:value={name}
+            class="appointment__name"
+            type="text"
+            name=""
+            placeholder="Name" />
+          <input
+            bind:value={email}
+            class="appointment__email"
+            type="email"
+            name=""
+            placeholder="Email" />
+        </div>
 
-      <div class="row">
-        <input
-          bind:value={phoneNumber}
-          class="appointment__number"
-          type="number"
-          placeholder="Phone Number" />
+        <div class="row">
+          <input
+            bind:value={phoneNumber}
+            class="appointment__number"
+            type="number"
+            placeholder="Phone Number" />
 
-        <select
-          bind:value={serviceType}
-          class="appointment-select"
-          name="cars"
-          id="cars">
-          <option value="tire">Tire</option>
-          <option value="oil">Oil</option>
-          <option value="water">Water</option>
-          <option value="color">Color</option>
-        </select>
-      </div>
+          <select
+            bind:value={serviceType}
+            class="appointment-select"
+            name="cars"
+            id="cars">
+            <option value="tire">Tire</option>
+            <option value="oil">Oil</option>
+            <option value="water">Water</option>
+            <option value="color">Color</option>
+          </select>
+        </div>
 
-      <div class="row">
-        <textarea bind:value={textContent} class="appointment__textarea" />
-      </div>
+        <div class="row">
+          <textarea bind:value={textContent} class="appointment__textarea" />
+        </div>
 
-      <div class="row align-appointment-btn">
-        <button class="appointment__btn">Make an appointment</button>
-      </div>
-    </form>
-
-    <div class="appointment__shell__description">description</div>
-  </div>
+        <div class="row align-appointment-btn">
+          <button class="appointment__btn">Make an appointment</button>
+        </div>
+      </form>
+    </div>
 </section>

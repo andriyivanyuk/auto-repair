@@ -119,6 +119,11 @@
   .about-us-shell__promisses__services img {
      align-self: flex-start;
   }
+  @media (max-width: 767px) {
+    .about-us-shell__promisses__services {
+      flex-direction: column;
+    }
+   }
  
 </style>
 
