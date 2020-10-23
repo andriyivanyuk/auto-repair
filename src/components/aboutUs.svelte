@@ -7,7 +7,7 @@
     padding: 100px 0 0;
   }
   .about-us-shell__who-we-are {
-    padding-top: 80px;
+    padding-top: 70px;
     background-color: #ffffff;
     max-width: 1020px;
     margin: -180px auto 0;
@@ -18,7 +18,7 @@
   }
   .about-us-shell__who-we-are__uptitle__content {
     margin-left: 33px;
-    font-size: 12px;
+    font-size: 14px;
     line-height: 24px;
     letter-spacing: 2.4px;
     text-transform: uppercase;
@@ -70,7 +70,7 @@
     text-transform: uppercase;
     letter-spacing: 2.5px;
     font-weight: 700;
-    color: #4B4B4B;
+    color: #4b4b4b;
   }
   .about-us-shell__promisses__title {
     font-size: 36px;
@@ -117,21 +117,98 @@
     max-width: 324px;
   }
   .about-us-shell__promisses__services img {
-     align-self: flex-start;
+    align-self: flex-start;
+  }
+
+  @media (min-width: 1024px) and (max-width: 1439px) {
+    .about-us-shell__who-we-are {
+      max-width: 820px;
+    }
+    .we-are-shell {
+      max-width: 620px;
+    }
+  }
+  @media (min-width: 768px) and (max-width: 1023px) {
+    .we-are-shell {
+      max-width: 83%;
+    }
+    .about-us-shell__who-we-are {
+      padding-top: 50px;
+      max-width: 85%;
+    }
+    .quality-wrapper,
+    .promisses-wrapper,
+    .services-wrapper {
+      margin-left: 12px;
+    }
+    .about-us-shell__promisses__services {
+      padding-bottom: 30px;
+    }
+    .about-us-shell__promisses__to-you__content {
+      font-size: 14px;
+    }
   }
   @media (max-width: 767px) {
     .about-us-shell__promisses__services {
       flex-direction: column;
+      margin-top: 40px;
+      padding-bottom: initial;
     }
-   }
- 
+    .about-us-shell__who-we-are {
+      max-width: 85%;
+      padding-top: 25px;
+    }
+    .we-are-shell {
+      max-width: 85%;
+    }
+    .about-us-shell__who-we-are__title {
+      text-align: center;
+    }
+    .about-us-shell__who-we-are__uptitle__content {
+      font-size: 16px;
+    }
+    .about-us-shell__promisses__to-you__content {
+      font-size: 16px;
+    }
+    .about-us-shell__promisses__services__one,
+    .about-us-shell__promisses__services__two,
+    .about-us-shell__promisses__services__three {
+      flex-direction: column;
+    }
+    .about-us-shell__promisses__services img {
+      align-self: center;
+    }
+    .about-us-shell__promisses__services__two,
+    .about-us-shell__promisses__services__three {
+      margin-top: 25px;
+    }
+    .about-us-shell__promisses__title {
+      text-align: center;
+    }
+    .quality-wrapper {
+      margin-top: 15px;
+    }
+    .about-us-shell__promisses__services__one__description,
+    .about-us-shell__promisses__services__two__description,
+    .about-us-shell__promisses__services__three__description,
+    .about-us-shell__promisses__services__one__title,
+    .about-us-shell__promisses__services__two__title,
+    .about-us-shell__promisses__services__three__title {
+      text-align: center;
+    }
+    .about-us-shell__promisses__services__one__title,
+    .about-us-shell__promisses__services__two__title,
+    .about-us-shell__promisses__services__three__title {
+      margin-top: 10px;
+    }
+  }
 </style>
 
 <section class="about-us-shell">
   <div class="about-us-shell__who-we-are">
     <div class="we-are-shell">
       <p class="about-us-shell__who-we-are__uptitle">
-        <span class="about-us-shell__who-we-are__uptitle__content">Who we are</span>
+        <span class="about-us-shell__who-we-are__uptitle__content">Наши работы</span>
       </p>
       <p class="about-us-shell__who-we-are__title">
         Nemo enim ipsam voluptatem quia voluptas in proident
@@ -153,8 +230,9 @@
   <div class="container">
     <div class="about-us-shell__promisses">
       <p class="about-us-shell__promisses__to-you">
-        <span class="about-us-shell__promisses__to-you__content">Our promise to
-          you</span>
+        <span class="about-us-shell__promisses__to-you__content">
+          Наши преимущества
+        </span>
       </p>
       <p class="about-us-shell__promisses__title">
         Sed perspiciatis omnis iste natus

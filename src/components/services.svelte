@@ -67,6 +67,9 @@
       font-size: 16px;
       color: #4B4B4B;
   }
+  @media (min-width: 1024px) and (max-width: 1439px) { 
+    
+  }
 </style>
 
 <section class="services__shell">

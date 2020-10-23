@@ -190,7 +190,7 @@
 
   @media (min-width: 1024px) and (max-width: 1439px) {
     .header-shell__upper-content {
-      max-width: 75%;
+      max-width: 820px;
     }
     .header-shell__down-content__title {
       line-height: 1.2;

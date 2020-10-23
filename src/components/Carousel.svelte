@@ -56,9 +56,46 @@
   .carousel-left {
     left: 2px;
   }
+  .carousel__shell__uptitle {
+    position: relative;
+    margin-bottom: 35px;
+  }
+  .carousel__shell__uptitle__content {
+    margin-left: 33px;
+    font-size: 12px;
+    line-height: 24px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-weight: 700;
+    color: #4b4b4b;
+  }
+  .carousel__shell__uptitle::before {
+    content: "";
+    width: 17px;
+    height: 21px;
+    background-image: url(/assets/img/overline-mark.svg);
+    position: absolute;
+    left: -6px;
+  }
+  @media (min-width: 768px) and (max-width: 1023px) { 
+    .carousel__shell {
+      padding: 50px 0;
+    }
+  }
+  @media (max-width: 767px) {
+    .carousel__shell__uptitle__content {
+      font-size: 16px;
+    }
+  }
 </style>
 
 <section class="carousel__shell">
+  <div class="container">
+    <p class="carousel__shell__uptitle">
+      <span class="carousel__shell__uptitle__content">Нащи работы</span>
+    </p>
+  </div>
+
   <div class="carousel-container">
     <div class="carousel-images">
       {#each images as image (image.id)}
